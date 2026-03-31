@@ -85,6 +85,46 @@
             text-decoration: none;
         }
         .footer a:hover { text-decoration: underline; }
+        .footer span { color: #666; }
+        .thoughts-intro {
+            color: #555;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+        .thoughts ol {
+            list-style: none;
+            counter-reset: q;
+            padding: 0;
+        }
+        .thoughts ol li {
+            counter-increment: q;
+            margin-bottom: 20px;
+            padding-left: 36px;
+            position: relative;
+        }
+        .thoughts ol li::before {
+            content: "Q" counter(q);
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #fff;
+            background: #4361ee;
+            border-radius: 6px;
+            font-size: 0.75em;
+            font-weight: 700;
+            padding: 2px 7px;
+        }
+        .thoughts ol li strong {
+            display: block;
+            margin-bottom: 6px;
+            color: #16213e;
+            font-size: 1.05em;
+        }
+        .thoughts ol li p {
+            line-height: 1.8;
+            color: #444;
+            font-size: 0.95em;
+        }
         @media (max-width: 600px) {
             .container { padding: 32px 16px; }
             .header h1 { font-size: 1.8em; }
@@ -123,8 +163,36 @@
             </ul>
         </div>
 
+        <div class="section thoughts">
+            <h2>Open Questions & Thoughts</h2>
+            <p class="thoughts-intro">以下是我一直在思考的一些技术问题，如果你也对这些话题感兴趣，欢迎交流探讨。</p>
+            <ol>
+                <li>
+                    <strong>预训练的 Token 效率悖论</strong>
+                    <p>大模型预训练中 next token prediction 存在严重的 token 使用效率问题。O1/R1 的 RL 训练仅用几百 K 量级的 token 信号反馈就能带来 reasoning 能力的大幅提升，而预训练使用的 token 量级多了 N 个数量级。这中间巨大的效率 gap 意味着什么？是否存在更高效的预训练范式？</p>
+                </li>
+                <li>
+                    <strong>预训练中隐藏的未激发能力</strong>
+                    <p>大模型预训练中隐藏的、未被充分激发的能力可能还有很多。我们目前的 post-training 手段是否只触及了冰山一角？如何系统性地探测和释放这些潜在能力？</p>
+                </li>
+                <li>
+                    <strong>智能的极限压缩率</strong>
+                    <p>今天最强模型的能力，极限能被压缩到多小的模型中？一个有趣的思考角度：假如我们拥有 GPT、Claude、Gemini 等前沿大模型 5-10 年后的版本作为 teacher，能蒸馏到多小的 student 模型里？这个答案可以作为极限压缩的一个上界估计。</p>
+                </li>
+                <li>
+                    <strong>视觉智能 vs. 语言智能</strong>
+                    <p>为什么动物可以从纯视觉中学会智能，而现在的多模态大模型却主要从 LLM 侧获取核心能力？视觉和语言在智能涌现中的角色差异到底是什么？这是否暗示了一条完全不同的通往智能的路径？</p>
+                </li>
+                <li>
+                    <strong>通往 AGI/ASI 的正确路径</strong>
+                    <p>真正正确构建 AGI/ASI 的路径是什么？一个可能的方向是：先通过今天的 LLM 充分解锁生产力，然后以 recursive self-improvement 的方式，让 AI 参与构建更强的 AI，间接但持续地逼近 AGI。这条路径是否可行？还是存在根本性的瓶颈？</p>
+                </li>
+            </ol>
+        </div>
+
         <div class="footer">
-            <a href="https://github.com/quietsmile">GitHub</a>
+            <a href="https://github.com/quietsmile">GitHub</a> &nbsp;|&nbsp;
+            <span>Feel free to reach out if any of these topics resonate with you.</span>
         </div>
     </div>
 </body>
